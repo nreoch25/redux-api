@@ -9,7 +9,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 // DB Setup
-mongoose.connect("mongodb://localhost:auth/auth");
+mongoose.connect("mongodb://"+ (process.env.MONGO_PORT_27017_TCP_ADDR || "localhost")  + ":27017/auth", function() {
+  console.log("mongo connected");
+});
 
 // App Setup
 app.use(morgan("combined"));
@@ -19,7 +21,7 @@ router(app);
 
 
 // Server Setup
-const port = process.env.PORT || 3090;
+const port = process.env.PORT || 8000;
 const server = http.createServer(app);
 server.listen(port);
 console.log("Server listening on: ", port);

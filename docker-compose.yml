@@ -1,0 +1,12 @@
+web:
+  build: .
+  ports:
+    - "8000:8000"
+  links:
+    - mongo
+mongo:
+  image: mongo:latest
+  ports:
+    - "28001:27017"
+  volumes:
+    - /data/db
