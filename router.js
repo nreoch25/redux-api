@@ -6,7 +6,7 @@ const requireAuth = passport.authenticate("jwt", { session: false });
 const requireSignin = passport.authenticate("local", { session: false });
 
 module.exports = function(app) {
-  app.get("/", requireAuth, function(req, res) { res.send({ message: "NFLEVATE Mock drafting coming soon!" }); });
+  app.get("/", requireAuth, function(req, res) { res.send({ message: "Feature page is authenticated" }); });
   app.post("/signin", requireSignin, Authentication.signin);
   app.post("/signup", Authentication.signup);
 }
